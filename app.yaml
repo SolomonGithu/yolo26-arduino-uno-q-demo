@@ -1,0 +1,5 @@
+name: YOLO26 object detection 
+description: "Detect objects with a YOLO26 model and track them."
+bricks:
+  - arduino:web_ui: {}
+icon: 🔢

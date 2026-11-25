@@ -1,0 +1,199 @@
+:root {
+  --bg: #ffffff;
+  --surface: #f1f3f5;
+  --line: #d3d8dd;
+  --ink: #1c2227;
+  --muted: #5d6872;
+  --sign: #0b6b45;
+  --sign-edge: #ffffff;
+  --amber: #f2b632;
+  --amber-ink: #8a5d00;
+  --danger: #c0392b;
+
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --sign-face: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 16px/1.5 var(--sans);
+}
+
+h1, h2, p, dl, dd, ul { margin: 0; padding: 0; }
+
+:focus-visible {
+  outline: 3px solid var(--amber-ink);
+  outline-offset: 2px;
+}
+
+.top {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 24px 8px;
+}
+.top h1 { font-size: 1.35rem; font-weight: 650; letter-spacing: 0.01em; }
+
+main {
+  display: grid;
+  gap: 20px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 8px 24px 40px;
+}
+
+.banner {
+  padding: 12px 16px;
+  border-left: 5px solid var(--danger);
+  background: var(--surface);
+  max-width: 78ch;
+}
+.banner code { color: var(--amber-ink); }
+
+.picker-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  margin-bottom: 10px;
+}
+.picker-head h2 { font-size: 1rem; font-weight: 600; margin-right: auto; }
+
+.check { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.9rem; }
+.check input { accent-color: var(--amber); width: 16px; height: 16px; }
+
+.videos {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  overflow-x: auto;
+  padding: 4px 4px 10px;
+}
+.videos > li { flex: 0 0 160px; min-width: 0; }
+
+.video-card {
+  width: 100%;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+}
+.video-card:hover { border-color: var(--line); }
+.video-card[aria-pressed="true"] { border-color: var(--amber); }
+
+.video-card .thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #000;
+}
+.video-card .meta { display: block; padding: 6px 8px 8px; }
+.video-card .name {
+  display: block;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.video-card .len { display: block; font-size: 0.78rem; color: var(--muted); }
+
+.badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: var(--sign);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  vertical-align: 1px;
+}
+
+.empty { color: var(--muted); max-width: 70ch; padding: 8px 0; }
+
+.screen {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.screen canvas { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  color: #fff;
+  font-size: 1.1rem;
+  background: rgba(0, 0, 0, 0.6);
+}
+.overlay[hidden] { display: none; }
+.overlay.is-clear { background: rgba(0, 0, 0, 0.45); pointer-events: none; }
+
+.readout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: 18px;
+}
+
+.sign {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
+  padding: 5px 14px 6px;
+  background: var(--sign);
+  border: 2px solid var(--sign-edge);
+  border-radius: 8px;
+  box-shadow: 0 0 0 3px var(--sign), inset 0 0 0 2px var(--sign);
+  color: #fff;
+  font: 700 clamp(1.1rem, 3vw, 1.6rem) / 1.1 var(--sign-face);
+  letter-spacing: 0.01em;
+}
+.sign output {
+  min-width: 2ch;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.stats { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-right: auto; }
+.stats dt { color: var(--muted); font-size: 0.8rem; }
+.stats dd { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+
+button {
+  padding: 9px 20px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--amber);
+  color: #231b00;
+  font: 600 0.95rem var(--sans);
+  cursor: pointer;
+}
+button:disabled { background: var(--surface); color: var(--muted); cursor: default; }
+button.ghost {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 6px 14px;
+  font-weight: 500;
+}
+button.ghost:hover { border-color: var(--muted); }
+
+@media (max-width: 600px) {
+  .top, main { padding-left: 14px; padding-right: 14px; }
+  .sign { padding: 4px 12px 5px; }
+}

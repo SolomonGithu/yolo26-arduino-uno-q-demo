@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YOLO26 object detection demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>YOLO26 object detection demo</h1>
+  </header>
+
+  <main>
+    <div class="banner" id="banner" role="alert" hidden></div>
+
+    <section class="picker" aria-labelledby="picker-title">
+      <div class="picker-head">
+        <h2 id="picker-title">Sample videos</h2>
+        <label class="check">
+          <input type="checkbox" id="loop" checked>
+          Loop the video
+        </label>
+        <label class="check">
+          <input type="checkbox" id="reprocess">
+          Run detection again
+        </label>
+        <button type="button" class="ghost" id="refresh">Refresh list</button>
+      </div>
+      <ul class="videos" id="videos"></ul>
+    </section>
+
+    <section class="stage" aria-label="Video with tracked vehicles">
+      <div class="screen">
+        <canvas id="view" width="1280" height="720"></canvas>
+        <p class="overlay" id="overlay" role="status">Pick a video to start</p>
+      </div>
+
+      <div class="readout">
+        <p class="sign">Vehicles in view: <output id="count" aria-label="Vehicles in view">0</output></p>
+        <dl class="stats">
+          <div><dt>Unique vehicles tracked</dt><dd id="unique">0</dd></div>
+          <div><dt>Inference time</dt><dd id="infer">–</dd></div>
+        </dl>
+        <button type="button" id="stop" disabled>Stop</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="libs/socket.io.min.js"></script>
+  <script>window.io || document.write('<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"><\/script>')</script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+sample_videos/*.mp4
+sample_videos/*.mov
+sample_videos/*.avi
+sample_videos/*.mkv
+sample_videos/*.webm
+sample_videos/*.m4v
+models/*.eim
+.cache/
